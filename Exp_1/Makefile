@@ -3,7 +3,7 @@ obj-m:=hello.o
 
 CURRENT_PATH :=$(shell pwd)
 VERSION_NUM :=$(shell uname -r)
-LINUX_PATH :=/usr/src/linux-headers-$(VERSION_NUM)
+LINUX_PATH :=/lib/modules/$(VERSION_NUM)/build/
 
 all :
 	make -C $(LINUX_PATH) M=$(CURRENT_PATH) modules

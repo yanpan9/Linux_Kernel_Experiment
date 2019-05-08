@@ -1,7 +1,7 @@
 #include<linux/init.h>
 #include<linux/module.h>
 #include<linux/kernel.h>
-#include<moduleparam.h>
+#include<linux/moduleparam.h>
 
 
 MODULE_LICENSE("GPL");
@@ -18,7 +18,7 @@ static int hello_init(void)
 {
    int i;
    for (i=0;i<num;i++){
-   //使用的是printk 不是printf（其是C库函数）
+      //使用的是printk 不是printf（其是C库函数）
       printk(KERN_ALERT "hello,%s\n",whom);
    }
    return 0;

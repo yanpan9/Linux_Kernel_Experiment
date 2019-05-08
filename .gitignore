@@ -1,2 +1,8 @@
 .DS_Store
 .vscode/
+.*
+*.ko
+*.o
+*.mod.*
+modules.order
+Module.symvers

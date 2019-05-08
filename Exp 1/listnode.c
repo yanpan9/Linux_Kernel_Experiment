@@ -6,8 +6,7 @@
 
 MODULE_LICENSE("GPL");
 
-static char* whom = "world";
-static int num = 1;
+static int num = 10;
 
 struct listnode{
     int val_;
@@ -83,7 +82,6 @@ int print(struct listnode* head)
 }
 
 //传递命令参数 S_IRUGO 指明参数可以被所有人读取 
-module_param(whom,charp,S_IRUGO);
 module_param(num,int,S_IRUGO);
 
 //程序中必须有下列两个函数

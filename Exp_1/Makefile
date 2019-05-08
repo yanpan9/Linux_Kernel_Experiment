@@ -1,4 +1,4 @@
-obj-m:=hello.o
+obj-m:=hello.o listnode.o
 
 
 CURRENT_PATH :=$(shell pwd)

@@ -11,25 +11,25 @@ static int num = 10;
 struct listnode{
     int val_;
     struct listnode* next_;
-}
+};
 
-int insert(struct listnode* head, val)
+int insert(struct listnode* head, int val)
 {
     struct listnode* node = head;
     while (node->next_ != NULL)
     {
         node = node->next_;
     }
-    struct listnode new_node = {->val=val, ->next_=NULL};
+    struct listnode new_node = {.val_=val, .next_=NULL};
     node->next_ = &new_node;
     return 1;
 }
 
-int delete(struct listnode* head, val)
+int delete(struct listnode* head, int val)
 {
-    if (head->val==val)
+    if (head->val_==val)
     {
-        head = head->next_
+        head = head->next_;
         return 1;
     }
     else
@@ -38,7 +38,7 @@ int delete(struct listnode* head, val)
         struct listnode* fast = head->next_;
         while (fast!=NULL)
         {
-            if (fast->val==val)
+            if (fast->val_==val)
             {
                 slow->next_=fast->next_;
                 return 1;
@@ -53,7 +53,7 @@ int delete(struct listnode* head, val)
     }
 }
 
-int lookup(struct listnode* head, val)
+int lookup(struct listnode* head, int val)
 {
     struct listnode* node = head;
     while (node!=NULL)
@@ -76,7 +76,7 @@ int print(struct listnode* head)
     int i = 0;
     while (node!=NULL)
     {
-        printk(KEAR_ALERT "The %d'th element is %d", i++, node->val);
+        printk(KERN_ALERT "The %d'th element is %d", i++, node->val_);
         node = node->next_;
     }
 }
@@ -90,18 +90,19 @@ static int listnode_init(void)
     printk(KERN_ALERT "Init the link list.\n");
     struct listnode head = {.val_=0, .next_=NULL};
     struct listnode* node = &head;
-    for (int i=1; i<num; i++)
+    int i;
+    for (i=1; i<num; i++)
     {
-        struct listnode new_node = {.val=i, .next=NULL}
-        node->next = &new_node;
+        struct listnode new_node = {.val_=i, .next_=NULL};
+        node->next_ = &new_node;
         node = node->next_;
     }
     printk(KERN_ALERT "Init complete. The link list is: \n");
-    print(&head)
+    print(&head);
 
     int insert_val = 99;
     insert(&head, insert_val);
-    printk(KERN_ALERT "After insert integer %d, the link list is: \n", insert_val)
+    printk(KERN_ALERT "After insert integer %d, the link list is: \n", insert_val);
 
     int delete_val = 0;
     if (delete(&head, delete_val)==1)

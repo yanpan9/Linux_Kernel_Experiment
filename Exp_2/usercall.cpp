@@ -46,7 +46,7 @@ int main()
     struct timeb starttime,endtime;
     ftime(&starttime);
     int i;
-    const int count = 25000000;
+    const int count = 100000000;
     for(i=0;i<count;i++) // +
     {
         int result;
@@ -68,11 +68,11 @@ int main()
     for(i=0;i<count;i++) // '//'
     {
         int result;
-        char op_div = '+';
+        char op_div = '\\';
         operation(&result, 20, 10, &op_div);
     }
     //gettimeofday(&tend);
     ftime(&endtime);
-    printf("usrcall time use:%ld msec", 1000*(endtime.time - starttime.time) + (endtime.millitm - starttime.millitm));
+    printf("Usrcall time use:%ld msec.\n", 1000*(endtime.time - starttime.time) + (endtime.millitm - starttime.millitm));
     return 0;
 }

@@ -25,14 +25,13 @@ int ASMD_Operation(int* result,int num1,int num2,char* op)
             if(num2!=0)
                 *result = num1/num2;
             else
-                printk("dived number can't be zero!\n");
+                printk("divided number can't be zero!\n");
         }else
             printk("unrecongized operator %c\n", *op);
     }else
     {
         printk("operation is empty.\n");
-}
-
+    }
     return 0;
 }
 

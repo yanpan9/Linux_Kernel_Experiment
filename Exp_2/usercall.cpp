@@ -25,7 +25,7 @@ long operation(int* result,int num1,int num2,char* op)
             if(num2!=0)
                 *result = num1/num2;
             else
-                printf("dived number can't be zero!\n");
+                printf("divided number can't be zero!\n");
         }else
             printf("unrecongized operator %c\n", *op);
     }else
@@ -51,25 +51,25 @@ int main()
     {
         int result;
         char op_add = '+';
-        operation(&result, 10, 10, &op_add);
+        operation(&result, i, 10, &op_add);
     }
     for(i=0;i<count;i++) // -
     {
         int result;
         char op_sub = '-';
-        operation(&result, 20, 10, &op_sub);
+        operation(&result, i, 10, &op_sub);
     }
     for(i=0;i<count;i++) // *
     {
         int result;
         char op_mul = '*';
-        operation(&result, 10, 10, &op_mul);
+        operation(&result, i, 2, &op_mul);
     }
     for(i=0;i<count;i++) // '//'
     {
         int result;
         char op_div = '\\';
-        operation(&result, 20, 10, &op_div);
+        operation(&result, i, 10, &op_div);
     }
     //gettimeofday(&tend);
     ftime(&endtime);

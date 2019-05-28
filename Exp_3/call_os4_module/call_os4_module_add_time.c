@@ -13,37 +13,39 @@ struct timeval tstart,tend;
 static int call_os4_module_init(void)
 {
     printk("call_os4_module_init...\n");
-
+    long count = 10000*10000;
+    printk("The count is %ld.\n", count);
     do_gettimeofday(&tstart);
-    const int count=25000000;
-    int result;
-    int i;
-    for(i=0;i<count;i++)
+    int i = 0;
+    for(i=0;i<count;i++) // +
     {
-        char op_add='+';
-        fptr_Operation(&result,10,10,&op_add);
+        int result;
+        char op_add = '+';
+        fptr_Operation(&result, i, 10, &op_add);
     }
-
-    for(i=0;i<count;i++)
+    for(i=0;i<count;i++) // -
     {
-        char op_sub='-';
-        fptr_Operation(&result,20,10,&op_sub);
+        int result;
+        char op_sub = '-';
+        fptr_Operation(&result, i, 10, &op_sub);
     }
-
-    for(i=0;i<count;i++)
+    for(i=0;i<count;i++) // *
     {
-        char op_mul='*';
-        fptr_Operation(&result,10,10,&op_mul);
+        int result;
+        char op_mul = '*';
+        fptr_Operation(&result, i, 2, &op_mul);
     }
-
-    for(i=0;i<count;i++)
+    for(i=0;i<count;i++) // '//'
     {
-        char op_div='\\';
-        fptr_Operation(&result,20,10,&op_div);
+        int result;
+        char op_div = '\\';
+        fptr_Operation(&result, i, 10, &op_div);
     }
-
     do_gettimeofday(&tend);
-    printk("total time:%ld millisec\n",1000*(tend.tv_sec-tstart.tv_sec)+(tend.tv_usec-tstart.tv_usec)/1000);
+	long delta_time = 1000*(tend.tv_sec - tstart.tv_sec) + (tend.tv_usec - tstart.tv_usec)/1000;
+    printk("The start time is %ld.\n", tstart.tv_sec*1000+tstart.tv_usec/1000);
+	printk("The end time is %ld.\n", tend.tv_sec*1000+tend.tv_usec/1000);
+	printk("Os4 mod time use:%ld msec", delta_time);
     return 0;
 }
 

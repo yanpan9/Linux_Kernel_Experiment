@@ -40,13 +40,10 @@ int main()
      * total:10000*10000 times
      * + - * / each 2500000 times
      */
-    //struct timeval tstart,tend;
-    //do_gettimeofday(&tstart);
-    //gettimeofday(&tstart);
     struct timeb starttime,endtime;
     ftime(&starttime);
     int i;
-    const int count = 100000000;
+    const int count = 10000*10000;
     for(i=0;i<count;i++) // +
     {
         int result;
@@ -71,7 +68,6 @@ int main()
         char op_div = '\\';
         operation(&result, i, 10, &op_div);
     }
-    //gettimeofday(&tend);
     ftime(&endtime);
     printf("Usrcall time use:%ld msec.\n", 1000*(endtime.time - starttime.time) + (endtime.millitm - starttime.millitm));
     return 0;

@@ -33,7 +33,10 @@ ssize_t DriverRead(struct file *pFileStruct, char __user *pBuffer, size_t count,
 
 ssize_t DriverWrite(struct file *pFileStruct, const char __user *pBuffer, size_t count, loff_t *pOffset)
 {
-    sprintf(msg, "%s(%d letters)", pBuffer, count);
+    printk("Entering driver write.\n");
+    char temp_msg[MSG_COUNT] = {0};
+    copy_from_user(temp_msg, pBuffer, count);
+    sprintf(msg, "%s(%d letters)", temp_msg, count);
     size_of_msg=strlen(msg);
     printk(DEVICE_NAME ":received %d characters from the user.\n",count);
     return 0;

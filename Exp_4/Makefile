@@ -1,5 +1,5 @@
-obj-m :=charMsgModuel.o
-charMsgModuel-objs :=charDevDriver.o DriverFileOperation.o
+obj-m :=charMsgModule.o
+charMsgModule-objs :=charDevDriver.o DriverFileOperation.o
 
 kernel_path=/lib/modules/$(shell uname -r)/build
 PWD :=$(shell pwd)

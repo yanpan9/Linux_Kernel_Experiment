@@ -2,7 +2,7 @@
 #include "DriverFileOperation.h"
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("zhaoj");
+MODULE_AUTHOR("yanpan");
 MODULE_DESCRIPTION("a simple linux char driver example");
 
 /**

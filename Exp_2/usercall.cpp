@@ -43,7 +43,7 @@ int main()
     struct timeb starttime,endtime;
     ftime(&starttime);
     int i;
-    const int count = 10000*10000;
+    const int count = 1000*1000;
     for(i=0;i<count;i++) // +
     {
         int result;
@@ -69,6 +69,6 @@ int main()
         operation(&result, i, 10, &op_div);
     }
     ftime(&endtime);
-    printf("Usrcall time use:%ld msec.\n", 1000*(endtime.time - starttime.time) + (endtime.millitm - starttime.millitm));
+    printf("Usercall time use:%ld msec.\n", 1000*(endtime.time - starttime.time) + (endtime.millitm - starttime.millitm));
     return 0;
 }

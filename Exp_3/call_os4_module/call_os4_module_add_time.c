@@ -11,7 +11,7 @@ extern int (*fptr_Operation)(int*,int,int,char*);
 static int call_os4_module_init(void)
 {
     printk("call_os4_module_init...\n");
-    long count = 10000*10000;
+    long count = 1000*1000;
     printk("The count is %ld.\n", count);
     struct timeval tstart,tend;
     do_gettimeofday(&tstart);

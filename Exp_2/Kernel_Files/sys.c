@@ -2085,39 +2085,48 @@ long yanpan_oper(int* result,int num1,int num2,char* op)
 }
 SYSCALL_DEFINE1(yanpan_func, int, count)
 {
+	int * result = (int *)kmalloc(count*sizeof(int), GFP_KERNEL);
+	count /= 4;
     printk("The count is %d.\n", count);
     struct timeval tstart, tend;
     do_gettimeofday(&tstart);
-    int i;
+    int i, j;
     for(i=0;i<count;i++) // +
     {
-        int result;
         char op_add = '+';
-        yanpan_oper(&result, i, 10, &op_add);
+        yanpan_oper(result+j, 10, 10, &op_add);
+		j++;
     }
     for(i=0;i<count;i++) // -
     {
-        int result;
         char op_sub = '-';
-        yanpan_oper(&result, i, 10, &op_sub);
+        yanpan_oper(result+j, 10, 10, &op_sub);
+		j++;
     }
     for(i=0;i<count;i++) // *
     {
-        int result;
         char op_mul = '*';
-        yanpan_oper(&result, i, 2, &op_mul);
+        yanpan_oper(result+j, 10, 10, &op_mul);
+		j++;
     }
     for(i=0;i<count;i++) // '//'
     {
-        int result;
         char op_div = '\\';
-        yanpan_oper(&result, i, 10, &op_div);
+        yanpan_oper(result+j, 10, 10, &op_div);
+		j++;
     }
     do_gettimeofday(&tend);
+	i = 0;
+	for(;i<j;i++)
+	{
+		printk("%d ", result[i]);
+	}
+	kfree(result);
 	long delta_time = 1000000*(tend.tv_sec - tstart.tv_sec) + (tend.tv_usec - tstart.tv_usec);
     printk("The start time is %ld.\n", tstart.tv_sec*1000000+tstart.tv_usec);
 	printk("The end time is %ld.\n", tend.tv_sec*1000000+tend.tv_usec);
 	printk("Syscall time use:%ld usec", delta_time);
+	printk("\n");
     return delta_time;
 }
 

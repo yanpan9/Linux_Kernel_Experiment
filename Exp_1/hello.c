@@ -19,21 +19,21 @@ static int hello_init(void)
    int i;
    for (i=0;i<num;i++){
       //使用的是printk 不是printf（其是C库函数）
-      printk(KERN_ALERT "hello,%s\n",whom);
+      printk(KERN_ALERT "Hello,%s\n",whom);
    }
    return 0;
 }
 
 static void hello_exit(void)
 {
-   printk(KERN_ALERT "goodbye,kernel/n");
+   printk(KERN_ALERT "Goodbye,kernel.\n");
 }
 
 //加载or卸载模块
 module_init(hello_init);
 module_exit(hello_exit);
 // 可选 
-MODULE_AUTHOR("zhou-silence");
-MODULE_DESCRIPTION("This is a simple example!/n");
+MODULE_AUTHOR("yanpan");
+MODULE_DESCRIPTION("This is a simple example!\n");
 MODULE_VERSION("v1.0");
 MODULE_ALIAS("A simplest example");

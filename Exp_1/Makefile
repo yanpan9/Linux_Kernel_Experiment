@@ -1,6 +1,5 @@
 obj-m:=hello.o listnode.o
 
-
 CURRENT_PATH :=$(shell pwd)
 VERSION_NUM :=$(shell uname -r)
 LINUX_PATH :=/lib/modules/$(VERSION_NUM)/build/
